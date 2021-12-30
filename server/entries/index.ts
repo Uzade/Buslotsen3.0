@@ -11,13 +11,6 @@ function entries(app: Express, prisma: PrismaClient){
         })
         .finally(async () => {
           await prisma.$disconnect()
-          getAll(res)
-            .catch((e) => {
-              throw e
-            })
-            .finally(async () => {
-              await prisma.$disconnect()
-            });
         });
       })
     

@@ -13,7 +13,7 @@ export async function getAll(res: Response) {
     });
   }
   
-  export async function newUser(req: Request, res: Response){
+export async function newUser(req: Request, res: Response){
     //console.log(req.body);
     const newUser = await prisma.user.create({
       data: {
@@ -22,4 +22,11 @@ export async function getAll(res: Response) {
         password: req.body.password,
       },
     });
-  }
+    res.status(201).json({
+      request:{
+        type: "newUser",
+        status: "done",
+      },
+      data: newUser
+  })
+}
