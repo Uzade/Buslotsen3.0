@@ -1,0 +1,26 @@
+GET http://localhost:8080/users/all
+
+###
+
+POST http://localhost:8080/users/new HTTP/1.1
+content-type: application/json
+
+{
+    "name": "KarlHeinz",
+    "email": "Karl@Heinz.de",
+    "password": "test12345"
+}
+
+###
+
+GET http://localhost:8080/entries/all
+
+###
+
+POST http://localhost:8080/entries/new HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Werner hat mich geschlagen",
+    "authorId": 8
+}

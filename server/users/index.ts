@@ -2,9 +2,9 @@ import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
 import { newUser, getAll } from "./functions";
 
-function users(app: Express){
+function users(app: Express, prisma: PrismaClient){
 
-    app.post('/new', (req, res) => {
+    app.post('/users/new', (req, res) => {
       newUser(req, res)
       .catch((e) => {
         throw e
@@ -21,7 +21,7 @@ function users(app: Express){
       });
     })
   
-    app.get('/', (req, res) => {
+    app.get('/users/all', (req, res) => {
       getAll(res)
       .catch((e) => {
         throw e
@@ -32,6 +32,5 @@ function users(app: Express){
       
     });
   }
-const prisma = new PrismaClient();
 
 export default users;
