@@ -1,8 +1,18 @@
 import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
-import { newUser, getAll } from "./functions";
+import { newUser, getAll, deleteUser } from "./functions";
 
 function users(app: Express, prisma: PrismaClient){
+
+    app.delete('/users/delete',(req, res) => {
+      deleteUser(req, res)
+      .catch((e) => {
+        throw e
+      })
+      .finally(async () => {
+        await prisma.$disconnect()
+      });
+    });
 
     app.post('/users/new', (req, res) => {
       newUser(req, res)
@@ -12,7 +22,7 @@ function users(app: Express, prisma: PrismaClient){
       .finally(async () => {
         await prisma.$disconnect()
       });
-    })
+    });
   
     app.get('/users/all', (req, res) => {
       getAll(res)
