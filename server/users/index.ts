@@ -1,6 +1,6 @@
 import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
-import { newUser, getAll, deleteUser } from "./functions";
+import { newUser, getAll, deleteUser, getPassword } from "./functions";
 
 function users(app: Express, prisma: PrismaClient){
 
@@ -26,6 +26,17 @@ function users(app: Express, prisma: PrismaClient){
   
     app.get('/users/all', (req, res) => {
       getAll(res)
+      .catch((e) => {
+        throw e
+      })
+      .finally(async () => {
+        await prisma.$disconnect()
+      });
+      
+    });
+
+    app.get('/users/password/:id', (req, res) => {
+      getPassword(res, Number(req.params.id))
       .catch((e) => {
         throw e
       })

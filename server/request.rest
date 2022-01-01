@@ -2,6 +2,10 @@ GET http://localhost:8080/users/all
 
 ###
 
+GET http://localhost:8080/users/password/4
+
+###
+
 POST http://localhost:8080/users/new HTTP/1.1
 content-type: application/json
 
@@ -17,7 +21,7 @@ DELETE http://localhost:8080/users/delete HTTP/1.1
 content-type: application/json
 
 {
-    "id": 3
+    "id": 9
 }
 
 ###
@@ -31,7 +35,7 @@ content-type: application/json
 
 {
     "title": "Werner hat mich geschlagen",
-    "authorId": 3
+    "authorId": 9
 }
 
 ###
