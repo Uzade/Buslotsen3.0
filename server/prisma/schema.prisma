@@ -23,6 +23,7 @@ model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
   password String  @default("password")
+  resetKey String  @default("None")
   name    String?
   entries Entry[]
 }

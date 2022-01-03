@@ -1,6 +1,7 @@
 import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
 import { newUser, getAll, deleteUser, getPassword } from "./functions";
+import sendMail from "./sendMail";
 
 function users(app: Express, prisma: PrismaClient){
 
@@ -12,6 +13,13 @@ function users(app: Express, prisma: PrismaClient){
       .finally(async () => {
         await prisma.$disconnect()
       });
+    });
+
+    app.get('/users/mail', (req, res) =>{
+      sendMail("joschka4@gmx.de", "ABC123");
+      res.status(200).json({
+        cool: "cool",
+      })
     });
 
     app.post('/users/new', (req, res) => {

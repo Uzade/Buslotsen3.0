@@ -2,7 +2,11 @@ GET http://localhost:8080/users/all
 
 ###
 
-GET http://localhost:8080/users/password/4
+GET http://localhost:8080/users/password/f
+
+###
+
+GET http://localhost:8080/users/mail
 
 ###
 
@@ -34,8 +38,8 @@ POST http://localhost:8080/entries/new HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Werner hat mich geschlagen",
-    "authorId": 9
+    "title": "Wer das ließt, der ist blöd",
+    "authorId": 10
 }
 
 ###
