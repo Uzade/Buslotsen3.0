@@ -3,48 +3,40 @@ import { PrismaClient } from "@prisma/client";
 
 import { Request, Response } from 'express-serve-static-core';
 
+const bcrypt = require('bcrypt');
+
 const prisma = new PrismaClient();
 
-export async function getPassword(res: Response, id: number) {
-  if (isNaN(id)) {
-    res.status(400).json({
-      request: {
-        type: "getPassword",
-        status: "not found",
-        id: id,
-      },
-      message: "You didn't specify a valid id."
-    });
-  } else {
-    const password = await prisma.user.findUnique({
-      where: {
-        id: id,
-      },
-      select: {
-        password: true
-      }
-    });
-    if (password == null) {
-      res.status(400).json({
-        request: {
-          type: "getPassword",
-          status: "not found",
-          id: id,
-        },
-        message: "You didn't specify a valid id."
-      });
+export async function login(req: Request, res: Response) {
+  const dbPassword = await prisma.user.findUnique({
+    select: {
+      password: true,
+    },
+    where: {
+      name: req.body.name, //it works fine
     }
-    else {
+  });
+  console.log(dbPassword);
+  bcrypt.compare(req.body.password, dbPassword?.password).then(
+    (result: any) => {
+      console.log("result ",result);
       res.status(200).json({
         request: {
-          type: "getPassword",
+          type: "login",
           status: "done",
-          id: id,
-        },
-        data: password?.password
+        }
+      });
+    },
+    (err: any) => {
+      console.log("error ",err);
+      res.status(400).json({
+        request: {
+          type: "login",
+          status: "wrong data",
+        }
       });
     }
-  }
+  );
 }
 
 export async function changePassword(req: Request, res: Response) {
@@ -158,11 +150,13 @@ export async function getAll(res: Response) {
 
 export async function newUser(req: Request, res: Response) {
   //console.log(req.body);
+  const hash = bcrypt.hash(req.body.password, 10);
+  console.log(await hash);
   const newUser = await prisma.user.create({
     data: {
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: await hash,
     },
   });
   res.status(201).json({

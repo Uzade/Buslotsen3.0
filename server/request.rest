@@ -2,7 +2,13 @@ GET http://localhost:8080/users/all
 
 ###
 
-GET http://localhost:8080/users/password/f
+POST http://localhost:8080/users/login/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "KarlHeinz",
+    "password": "test12345"
+}
 
 ###
 
@@ -21,11 +27,21 @@ content-type: application/json
 
 ###
 
+POST http://localhost:8080/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "name": "KarlHeinz",
+    "password": "test12345"
+}
+
+###
+
 DELETE http://localhost:8080/users/delete HTTP/1.1
 content-type: application/json
 
 {
-    "id": 9
+    "id": 10
 }
 
 ###
@@ -38,7 +54,7 @@ POST http://localhost:8080/entries/new HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Wer das ließt, der ist blöd",
+    "title": "Moin Moin, heude Bubblesort!",
     "authorId": 10
 }
 

@@ -24,6 +24,6 @@ model User {
   email   String   @unique
   password String  @default("password")
   resetKey String  @default("None")
-  name    String?
+  name    String   @unique
   entries Entry[]
 }
