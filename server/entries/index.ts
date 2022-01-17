@@ -1,6 +1,8 @@
 import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
-import { newEntry, getAll, deleteEntry } from "./functions";
+import deleteEntry from "./functions/deleteEntries";
+import getAll from "./functions/getAll";
+import newEntry from "./functions/newEntry";
 
 function entries(app: Express, prisma: PrismaClient){
     
@@ -24,8 +26,8 @@ function entries(app: Express, prisma: PrismaClient){
         });
       })
     
-    app.get('/entries/all', (req, res) => {
-        getAll(res)
+    app.post('/entries/all', (req, res) => {
+        getAll(req, res)
         .catch((e) => {
           throw e
         })
