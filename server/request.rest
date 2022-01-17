@@ -1,4 +1,12 @@
-GET http://localhost:8080/users/all
+POST http://localhost:8080/users/all HTTP/1.1
+content-type: application/json
+
+{
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    }
+}
 
 ###
 
@@ -7,7 +15,7 @@ content-type: application/json
 
 {
     "name": "KarlHeinz",
-    "password": "test12345"
+    "password": "test12346"
 }
 
 ###
@@ -20,6 +28,10 @@ POST http://localhost:8080/users/new HTTP/1.1
 content-type: application/json
 
 {
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    },
     "name": "KarlHeinz",
     "email": "Karl@Heinz.de",
     "password": "test12345"
@@ -41,12 +53,24 @@ DELETE http://localhost:8080/users/delete HTTP/1.1
 content-type: application/json
 
 {
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    },
     "id": 10
 }
 
 ###
 
-GET http://localhost:8080/entries/all
+POST http://localhost:8080/entries/all HTTP/1.1
+content-type: application/json
+
+{
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    }
+}
 
 ###
 
@@ -54,8 +78,12 @@ POST http://localhost:8080/entries/new HTTP/1.1
 content-type: application/json
 
 {
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    },
     "title": "Moin Moin, heude Bubblesort!",
-    "authorId": 10
+    "authorId": 11
 }
 
 ###
@@ -64,6 +92,10 @@ DELETE http://localhost:8080/entries/delete HTTP/1.1
 content-type: application/json
 
 {
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    },
     "id": 1,
     "userId": 8
 }
