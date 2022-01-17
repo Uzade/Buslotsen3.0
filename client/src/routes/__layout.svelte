@@ -1,8 +1,31 @@
+<script lang="ts">
+    function logout (e){
+        console.log(e);
+        sessionStorage.removeItem('UID');
+        sessionStorage.removeItem('password')
+        window.location.href = 'http://localhost:3000/login';
+    }
+
+    let loggedIn = false;
+    if (typeof window !== 'undefined') {
+		const UID = sessionStorage.getItem('UID');
+		const password = sessionStorage.getItem('password');
+
+		if (UID || password) {
+			loggedIn = true;
+		}
+	}
+</script>
+
 
 <div id="navbar">
     <a href="./">Overview</a>
     <a href="./post"> New Post</a>
     <a href="./contact">Contakt</a>
+    {#if loggedIn}
+        <button on:click|once={logout}>Logout</button>
+    {/if}
+    
 
 </div>
 
@@ -20,10 +43,11 @@
         padding-bottom: 0.5rem;
         background-color: rgba(255, 42, 244, 0.244);
     }
-    a{
+    a, button{
+        all: unset;
         margin: 3px;
         text-decoration: none;
-        padding: 1rem;
+        padding: 0.7rem;
         background-image: linear-gradient(to bottom right, rgb(255, 23, 100), rgb(204, 28, 131));
         color: aliceblue;
     }
