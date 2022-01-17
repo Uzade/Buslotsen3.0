@@ -25,5 +25,6 @@ model User {
   password String  @default("password")
   resetKey String  @default("None")
   name    String   @unique
+  permitionId Int @default(0)
   entries Entry[]
 }
