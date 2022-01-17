@@ -16,19 +16,26 @@ export async function login(req: Request, res: Response) {
       name: req.body.name, //it works fine
     }
   });
-  console.log(dbPassword);
   bcrypt.compare(req.body.password, dbPassword?.password).then(
     (result: any) => {
-      console.log("result ",result);
+      if(result){
       res.status(200).json({
         request: {
           type: "login",
           status: "done",
         }
       });
+      }
+      else{
+        res.status(400).json({
+          request: {
+            type: "login",
+            status: "wrong data",
+          }
+        });
+      }
     },
     (err: any) => {
-      console.log("error ",err);
       res.status(400).json({
         request: {
           type: "login",
