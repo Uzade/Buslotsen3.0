@@ -13,7 +13,7 @@ async function deleteEntry(req: Request, res: Response) {
             message: "You specified the wrong login credentials."
         });
     }
-    else if (await checkPerm(req.body.requestor.password, req.body.requestor.name, 1)) {
+    else if (await checkPerm(req.body.requestor.password, req.body.requestor.name, 0)) {
         const entry = await prisma.entry.findUnique({
             where: {
                 id: req.body.id,
