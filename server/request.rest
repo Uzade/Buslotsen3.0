@@ -82,7 +82,12 @@ content-type: application/json
         "name": "KarlHeinz",
         "password": "test12345"
     },
-    "title": "Moin Moin, heude Bubblesort!",
+    "suspect": "Werner",
+    "school": "wigbertschule",
+    "class": "5b",
+    "time": "2022-11-11T11:11:11.111Z",
+    "location": "schule",
+    "incident": "Hat Karl Heinz ummgebracht.",
     "authorId": 11
 }
 
@@ -96,6 +101,6 @@ content-type: application/json
         "name": "KarlHeinz",
         "password": "test12345"
     },
-    "id": 1,
-    "userId": 8
+    "id": 22,
+    "userId": 11
 }

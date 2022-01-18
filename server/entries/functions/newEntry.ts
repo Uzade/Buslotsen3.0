@@ -16,7 +16,7 @@ async function newEntry(req: Request, res: Response) {
         });
     }
     else if (await checkPerm(req.body.requestor.password, req.body.requestor.name, 0)) {
-        if (!req.body.title || !req.body.authorId) {
+        if (!req.body.authorId) {
             res.status(400).json({
                 request: {
                     type: "getAll",
@@ -28,8 +28,14 @@ async function newEntry(req: Request, res: Response) {
         else {
             const newEntry = await prisma.entry.create({
                 data: {
-                    title: req.body.title,
+                    suspect: req.body.suspect,
+                    school: req.body.school,
+                    class: req.body.class,
+                    time: req.body.time,
+                    location: req.body.location,
+                    incident: req.body.incident,
                     authorId: req.body.authorId,
+
                 },
             });
             res.status(201).json({
