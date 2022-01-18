@@ -42,7 +42,7 @@ function users(app: Express, prisma: PrismaClient){
       });
     });
   
-    app.get('/users/all', (req, res) => {
+    app.post('/users/all', (req, res) => {
       getAll(res)
       .catch((e) => {
         throw e
