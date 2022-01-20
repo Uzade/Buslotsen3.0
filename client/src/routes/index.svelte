@@ -9,6 +9,8 @@
 	}
 
 	import Entry from '../entry.svelte';
+	import Modal from '../modal.svelte';
+	import { modalNumber } from '../store'
 
 	let entries = [];
 	fetch('http://localhost:8080/entries/all', {
@@ -26,14 +28,43 @@
 		.then((response) => response.json())
 		.then((data) => {
 			entries = data.data;
+			for (const index in entries) {
+				if (entries[index].suspect) {
+					entries[index].message = entries[index].suspect + ' ' + entries[index].incident;
+				} else {
+					if (entries[index].school) {
+						entries[index].message =
+							'Ein Schüler der ' + entries[index].school + ' ' + entries[index].incident;
+					} else {
+						entries[index].message = 'Ein Schüler ' + entries[index].incident;
+					}
+				}
+			}
 			//console.log(entries);
 		});
-	//$: console.log(entries);
 </script>
 
 <div>
-	{#each entries as entry}
-		<Entry author={entry.author.name} message={entry.title} createdAt={entry.createdAt} />
+	{#if $modalNumber}
+		<Modal
+			suspect={entries[$modalNumber].suspect}
+			school={entries[$modalNumber].school}
+			time={entries[$modalNumber].time}
+			location={entries[$modalNumber].location}
+			incident={entries[$modalNumber].message}
+			author={entries[$modalNumber].author.name}
+			klasse={entries[$modalNumber].class}
+		/>
+	{/if}
+
+	{#each entries as entry,i}
+		<div on:click={() => $modalNumber = i}>
+			<Entry
+				author={entry.author.name}
+				message={entry.message} 
+				createdAt={entry.createdAt} 
+			/>
+		</div>
 	{:else}
 		<p>loading...</p>
 	{/each}
