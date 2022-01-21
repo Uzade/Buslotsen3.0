@@ -1,4 +1,9 @@
 <script>
+	import Entry from '../entry.svelte';
+	import Modal from '../modal.svelte';
+	import { modalNumber } from '../store'
+
+	let entries = [];
 	if (typeof window !== 'undefined') {
 		const UID = sessionStorage.getItem('UID');
 		const password = sessionStorage.getItem('password');
@@ -6,13 +11,8 @@
 		if (!UID || !password) {
 			window.location.href = 'http://localhost:3000/login';
 		}
-	}
+	
 
-	import Entry from '../entry.svelte';
-	import Modal from '../modal.svelte';
-	import { modalNumber } from '../store'
-
-	let entries = [];
 	fetch('http://localhost:8080/entries/all', {
 		method: 'POST',
 		headers: {
@@ -20,8 +20,8 @@
 		},
 		body: JSON.stringify({
 			requestor: {
-				name: 'KarlHeinz',
-				password: 'test12345'
+				name: UID,
+				password: password
 			}
 		})
 	})
@@ -42,6 +42,7 @@
 			}
 			//console.log(entries);
 		});
+	}
 </script>
 
 <div>
