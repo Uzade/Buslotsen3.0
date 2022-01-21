@@ -20,6 +20,12 @@ async function deleteEntry(req: Request, res: Response) {
             },
         })
 
+        const user = await prisma.user.findUnique({
+            where: {
+                name: req.body.requestor.name
+            }
+        })
+
         if (entry == null) {
             res.status(400).json({
                 request: {
@@ -29,14 +35,14 @@ async function deleteEntry(req: Request, res: Response) {
                 message: "You didn't specify a valid id."
             });
         }
-        //TODO check for admin status, when admin is added
-        else if (req.body.userId != entry?.authorId) {
-            res.status(401).json({
+        else if(user?.permitionId != 1 && user?.id != entry.authorId){
+            //is not an admin and not the owner of the entry
+            res.status(400).json({
                 request: {
                     type: "deleteEntry",
                     status: "not allowed",
                 },
-                message: "You are neither to author nor the admin!"
+                message: "You are neither an admin nor the owner of the post"
             });
         }
         else {
