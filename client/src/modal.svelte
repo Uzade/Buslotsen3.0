@@ -44,5 +44,6 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         padding: 2vh 4vw;
         color: black;
+        max-width: 90vw;
     }
 </style>
