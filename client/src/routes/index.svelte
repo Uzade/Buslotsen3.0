@@ -1,7 +1,7 @@
 <script>
 	import Entry from '../entry.svelte';
 	import Modal from '../modal.svelte';
-	import { modalNumber } from '../store'
+	import { modalNumber, modalPostId } from '../store'
 
 	let entries = [];
 	if (typeof window !== 'undefined') {
@@ -59,7 +59,7 @@
 	{/if}
 
 	{#each entries as entry,i}
-		<div on:click={() => $modalNumber = i}>
+		<div on:click={() => {$modalNumber = i; $modalPostId = entry.id}}>
 			<Entry
 				author={entry.author.name}
 				message={entry.message} 
