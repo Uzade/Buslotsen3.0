@@ -101,6 +101,5 @@ content-type: application/json
         "name": "KarlHeinz",
         "password": "test12345"
     },
-    "id": 22,
-    "userId": 11
+    "id": 24
 }
