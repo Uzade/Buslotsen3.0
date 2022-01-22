@@ -28,20 +28,48 @@
 	}
 </script>
 
-<div>
+<div class="login">
 	<form on:submit|preventDefault={onSubmit}>
 		<div>
-			<label for="name">Username</label> <br>
-			<input type="text" id="UID" name="UID" value="" />
+			<input type="text" id="UID" name="UID" value="" placeholder="Username" />
 		</div>
 		<div>
-            <label for="name">Password</label> <br>
-			<input type="password" id="password" name="password" value="" />
+            <br>
+			<input type="password" id="password" name="password" value="" placeholder="Password" />
 		</div>
-		<button type="submit">Submit</button>
+		<div class="center">
+			<button type="submit">Absenden</button>
+		</div>		
 	</form>
 </div>
 
 <style>
-    
+.login{
+	display: flex;
+	justify-content: center;
+	margin-top: 15vh;
+}
+button{
+        all: unset;
+        margin: 3px;
+        text-decoration: none;
+        padding: 0.7rem;
+        background-image: linear-gradient(to bottom right, rgb(255, 23, 100), rgb(204, 28, 131));
+        color: aliceblue;
+    }
+.center{
+	display: flex;
+	justify-content: center;
+	margin-top: 3vh;
+}
+input{
+	all: unset;
+	position: relative;
+	font-size: 3vh;
+	background: darkmagenta;
+	padding: 3px;
+	border-radius:5vw ;
+	text-align: center;
+	color: rgb(255, 255, 255);
+}
 </style>
