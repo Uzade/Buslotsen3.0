@@ -1,11 +1,13 @@
-<script lang="ts">
+<script>
+	import { isAdmin } from '../store'
 	function onSubmit(e) {
+		const dbUrl = import.meta.env.VITE_BACKEND_URL;
 		const data = {
 			name: e.target.UID.value,
 			password: e.target.password.value
 		};
 
-		fetch('http://localhost:8080/users/login/', {
+		fetch(dbUrl + 'users/login/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -18,6 +20,9 @@
 					console.log('Logged in!');
 					sessionStorage.setItem('UID', e.target.UID.value);
 					sessionStorage.setItem('password', e.target.password.value);
+					if(data.data.permitionId = 1){
+						$isAdmin = true;
+					}
 					window.location.href = 'http://localhost:3000/';
 				} //TODO implement error display after error messaages are implemented in backend
 				/*else if(data.request.status == 'error'){
@@ -31,11 +36,11 @@
 <div>
 	<form on:submit|preventDefault={onSubmit}>
 		<div>
-			<label for="name">Username</label> <br>
+			<label for="name">Username</label> <br />
 			<input type="text" id="UID" name="UID" value="" />
 		</div>
-		<div>
-            <label for="name">Password</label> <br>
+		<div class="moin">
+			<label for="name">Password</label> <br />
 			<input type="password" id="password" name="password" value="" />
 		</div>
 		<button type="submit">Submit</button>
@@ -43,5 +48,4 @@
 </div>
 
 <style>
-    
 </style>

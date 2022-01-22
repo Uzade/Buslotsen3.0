@@ -3,6 +3,8 @@
 	import Modal from '../modal.svelte';
 	import { modalNumber, modalPostId } from '../store'
 
+	const dbUrl = import.meta.env.VITE_BACKEND_URL;
+
 	let entries = [];
 	if (typeof window !== 'undefined') {
 		const UID = sessionStorage.getItem('UID');
@@ -13,7 +15,7 @@
 		}
 	
 
-	fetch('http://localhost:8080/entries/all', {
+	fetch(dbUrl + 'entries/all', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'

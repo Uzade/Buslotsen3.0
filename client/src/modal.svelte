@@ -13,6 +13,7 @@
 	const password = sessionStorage.getItem('password');
 
 	function deleteEntry(entry: Number) {
+		const dbUrl = import.meta.env.VITE_BACKEND_URL;
 		const data = {
 			requestor: {
 				name: UID,
@@ -21,7 +22,7 @@
 			id: entry
 		};
 
-		fetch('http://localhost:8080/entries/delete', {
+		fetch(dbUrl + 'entries/delete', {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json'
