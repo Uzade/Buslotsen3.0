@@ -12,6 +12,7 @@
 	let error = '';
 
 	function onSubmit(e) {
+		const dbUrl = import.meta.env.VITE_BACKEND_URL;
         const UID = sessionStorage.getItem('UID');
 		const password = sessionStorage.getItem('password');
 		const data = {
@@ -23,7 +24,7 @@
 			authorId: Number(e.target.id.value)
 		};
 
-		fetch('http://localhost:8080/entries/new', {
+		fetch(dbUrl + 'entries/new', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
