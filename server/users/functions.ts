@@ -11,6 +11,7 @@ export async function login(req: Request, res: Response) {
   const dbPassword = await prisma.user.findUnique({
     select: {
       password: true,
+      permitionId: true,
     },
     where: {
       name: req.body.name, //it works fine
@@ -23,6 +24,9 @@ export async function login(req: Request, res: Response) {
         request: {
           type: "login",
           status: "done",
+        },
+        data: {
+          permitionId: dbPassword?.permitionId
         }
       });
       }

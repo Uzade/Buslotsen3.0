@@ -1,11 +1,13 @@
-<script lang="ts">
+<script>
+	import { isAdmin } from '../store'
 	function onSubmit(e) {
+		const dbUrl = import.meta.env.VITE_BACKEND_URL;
 		const data = {
 			name: e.target.UID.value,
 			password: e.target.password.value
 		};
 
-		fetch('http://localhost:8080/users/login/', {
+		fetch(dbUrl + 'users/login/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -18,6 +20,9 @@
 					console.log('Logged in!');
 					sessionStorage.setItem('UID', e.target.UID.value);
 					sessionStorage.setItem('password', e.target.password.value);
+					if(data.data.permitionId = 1){
+						$isAdmin = true;
+					}
 					window.location.href = 'http://localhost:3000/';
 				} //TODO implement error display after error messaages are implemented in backend
 				/*else if(data.request.status == 'error'){
@@ -31,11 +36,20 @@
 <div class="login">
 	<form on:submit|preventDefault={onSubmit}>
 		<div>
+<<<<<<< HEAD
 			<input type="text" id="UID" name="UID" value="" placeholder="Username" />
 		</div>
 		<div>
             <br>
 			<input type="password" id="password" name="password" value="" placeholder="Password" />
+=======
+			<label for="name">Username</label> <br />
+			<input type="text" id="UID" name="UID" value="" />
+		</div>
+		<div class="moin">
+			<label for="name">Password</label> <br />
+			<input type="password" id="password" name="password" value="" />
+>>>>>>> 660e2a0655473f965989525ec1abfcf924d176f4
 		</div>
 		<div class="center">
 			<button type="submit">Absenden</button>
@@ -44,6 +58,7 @@
 </div>
 
 <style>
+<<<<<<< HEAD
 .login{
 	display: flex;
 	justify-content: center;
@@ -72,4 +87,6 @@ input{
 	text-align: center;
 	color: rgb(255, 255, 255);
 }
+=======
+>>>>>>> 660e2a0655473f965989525ec1abfcf924d176f4
 </style>
