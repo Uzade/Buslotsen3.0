@@ -168,6 +168,7 @@ export async function newUser(req: Request, res: Response) {
       name: req.body.name,
       email: req.body.email,
       password: await hash,
+      permitionId: req.body.permitionID,
     },
   });
   res.status(201).json({
