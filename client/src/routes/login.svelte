@@ -59,7 +59,7 @@ button{
         margin: 3px;
         text-decoration: none;
         padding: 0.7rem;
-        background-image: linear-gradient(to bottom right, rgb(255, 23, 100), rgb(204, 28, 131));
+        background-image: linear-gradient(to bottom right, rgb(15, 184, 218), rgb(34, 143, 57));
         color: aliceblue;
     }
 .center{
@@ -71,10 +71,12 @@ input{
 	all: unset;
 	position: relative;
 	font-size: 3vh;
-	background: darkmagenta;
+	background: linear-gradient(to bottom right, rgb(50, 218, 86),rgb(9, 183, 216) );
 	padding: 3px;
 	border-radius:5vw ;
 	text-align: center;
-	color: rgb(255, 255, 255);
+}
+::placeholder{
+	color: floralwhite;
 }
 </style>
