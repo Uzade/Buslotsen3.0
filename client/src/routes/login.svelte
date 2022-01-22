@@ -36,20 +36,11 @@
 <div class="login">
 	<form on:submit|preventDefault={onSubmit}>
 		<div>
-<<<<<<< HEAD
 			<input type="text" id="UID" name="UID" value="" placeholder="Username" />
 		</div>
 		<div>
             <br>
 			<input type="password" id="password" name="password" value="" placeholder="Password" />
-=======
-			<label for="name">Username</label> <br />
-			<input type="text" id="UID" name="UID" value="" />
-		</div>
-		<div class="moin">
-			<label for="name">Password</label> <br />
-			<input type="password" id="password" name="password" value="" />
->>>>>>> 660e2a0655473f965989525ec1abfcf924d176f4
 		</div>
 		<div class="center">
 			<button type="submit">Absenden</button>
@@ -58,7 +49,6 @@
 </div>
 
 <style>
-<<<<<<< HEAD
 .login{
 	display: flex;
 	justify-content: center;
@@ -87,6 +77,4 @@ input{
 	text-align: center;
 	color: rgb(255, 255, 255);
 }
-=======
->>>>>>> 660e2a0655473f965989525ec1abfcf924d176f4
 </style>
