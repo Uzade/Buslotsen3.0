@@ -6,10 +6,8 @@ const prisma = new PrismaClient()
 
 async function getAll(req: Request, res: Response) {
     let value = await checkPerm(req.body.requestor.password, req.body.requestor.name, 0);
-    console.log(req.body.requestor.password);
-    console.log(value)
     if (!req.body.requestor.password || !req.body.requestor.name) {
-        res.status(400).json({
+        res.status(401).json({
             request: {
                 type: "getAll",
                 status: "no permition",
@@ -37,7 +35,7 @@ async function getAll(req: Request, res: Response) {
     }
     else {
         console.log("Hier")
-        res.status(400).json({
+        res.status(401).json({
             request: {
                 type: "getAll",
                 status: "no permition",
