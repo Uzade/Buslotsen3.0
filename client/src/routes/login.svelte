@@ -62,6 +62,9 @@ button{
         background: rgb(1, 109, 142);
         color: aliceblue;
 		border-radius: 0.3em;
+		width: 20vw;
+		text-align: center;
+		font-size: larger;
     }
 .center{
 	display: flex;
