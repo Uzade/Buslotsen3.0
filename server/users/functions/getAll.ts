@@ -15,7 +15,7 @@ async function getAll(req: Request, res: Response) {
     });
   }
   else {
-    let value = await checkPerm(req.body.requestor.password, req.body.requestor.name, 0);
+    let value = await checkPerm(req.body.requestor.password, req.body.requestor.name, 1);
     if (value) {
       const allUsers = await prisma.user.findMany({
         select: {

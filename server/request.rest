@@ -29,11 +29,11 @@ content-type: application/json
 
 {
     "requestor": {
-        "name": "KarlHeinz",
-        "password": "test12345"
+        "name": "admin",
+        "password": "password"
     },
-    "name": "admin",
-    "email": "admin@bigboss.de",
+    "name": "admin2",
+    "email": "admin2@bigboss.de",
     "password": "password",
     "permitionId": 1
 }

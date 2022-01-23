@@ -23,7 +23,7 @@ async function newUser(req: Request, res: Response) {
     })
   }
   else {
-    let permition = await checkPerm(req.body.requestor.password, req.body.requestor.name, 0);
+    let permition = await checkPerm(req.body.requestor.password, req.body.requestor.name, 1);
     if (permition) {
       const hash = bcrypt.hash(req.body.password, 10);
       console.log(await hash);

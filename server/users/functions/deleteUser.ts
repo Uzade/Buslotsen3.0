@@ -14,7 +14,7 @@ async function deleteUser(req: Request, res: Response) {
     });
   }
   else {
-    let value = await checkPerm(req.body.requestor.password, req.body.requestor.name, 0);
+    let value = await checkPerm(req.body.requestor.password, req.body.requestor.name, 1);
     if (value) {
       const user = await prisma.user.findUnique({
         where: {
