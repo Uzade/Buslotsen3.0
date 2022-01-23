@@ -32,9 +32,10 @@ content-type: application/json
         "name": "KarlHeinz",
         "password": "test12345"
     },
-    "name": "KarlHeinz",
-    "email": "Karl@Heinz.de",
-    "password": "test12345"
+    "name": "admin",
+    "email": "admin@bigboss.de",
+    "password": "password",
+    "permitionId": 1
 }
 
 ###
@@ -74,6 +75,19 @@ content-type: application/json
 
 ###
 
+
+POST https://perfume-sally-ran-layer.trycloudflare.com/entries/all HTTP/1.1
+content-type: application/json
+
+{
+    "requestor": {
+        "name": "KarlHeinz",
+        "password": "test12345"
+    }
+}
+
+###
+
 POST http://localhost:8080/entries/new HTTP/1.1
 content-type: application/json
 
@@ -82,12 +96,12 @@ content-type: application/json
         "name": "KarlHeinz",
         "password": "test12345"
     },
-    "suspect": "Werner",
-    "school": "wigbertschule",
-    "class": "5b",
-    "time": "2022-11-11T11:11:11.111Z",
-    "location": "schule",
-    "incident": "Hat Karl Heinz ummgebracht.",
+    "suspect": "Klaus Mirk",
+    "school": "Wigbertschule",
+    "class": "10z",
+    "time": "2022-01-04T23:55:26.111Z",
+    "location": "an der Schule",
+    "incident": "hat mein Frühstück geklaut",
     "authorId": 11
 }
 
