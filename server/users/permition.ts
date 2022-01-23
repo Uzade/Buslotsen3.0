@@ -6,6 +6,9 @@ const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
 async function checkPerm(password: string, name: string, reqPermition: number) {
+  if(name == null){
+    return false;
+  }
   const dbPassword = await prisma.user.findUnique({
     select: {
       password: true,
