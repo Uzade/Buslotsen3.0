@@ -1,6 +1,9 @@
 import { Express } from "express-serve-static-core";
 import { PrismaClient } from "@prisma/client";
-import { newUser, getAll, deleteUser, login } from "./functions";
+import newUser from "./functions/newUser";
+import getAll from "./functions/getAll";	
+import deleteUser from "./functions/deleteUser";
+import login from "./functions/login";
 import sendMail from "./sendMail";
 
 function users(app: Express, prisma: PrismaClient){
