@@ -61,7 +61,7 @@ button{
         padding: 0.7rem;
         background: rgb(1, 109, 142);
         color: aliceblue;
-		border-radius: 4vw;
+		border-radius: 0.3em;
     }
 .center{
 	display: flex;
@@ -72,9 +72,10 @@ input{
 	all: unset;
 	position: relative;
 	font-size: 3vh;
-	background: linear-gradient(to bottom right, rgb(50, 218, 86),rgb(20, 80, 5) );
+	background: linear-gradient(to right, rgb(50, 218, 86),rgb(9, 216, 181) );
+	/*background: linear-gradient(to bottom right, rgb(50, 218, 86),rgb(20, 80, 5) );*/
 	padding: 3px;
-	border-radius:5vw ;
+	border-radius: 0.3em;
 	text-align: center;
 }
 ::placeholder{
