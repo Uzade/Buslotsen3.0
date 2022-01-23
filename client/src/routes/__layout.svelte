@@ -1,4 +1,7 @@
 <script lang="ts">
+
+    import { isAdmin } from '../store';
+
     function logout (e){
         console.log(e);
         sessionStorage.removeItem('UID');
@@ -24,6 +27,9 @@
     <a href="./contact">Contakt</a>
     {#if loggedIn}
         <button on:click|once={logout}>Logout</button>
+    {/if}
+    {#if $isAdmin}
+        <a href="./admin">Admin</a>
     {/if}
     
 
