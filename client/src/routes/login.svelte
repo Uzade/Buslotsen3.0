@@ -23,7 +23,7 @@
 					if(data.data.permitionId = 1){
 						$isAdmin = true;
 					}
-					window.location.href = 'http://localhost:3000/';
+					window.location.href = 'https://virgin-yukon-sbjct-ratios.trycloudflare.com/';
 				} //TODO implement error display after error messaages are implemented in backend
 				/*else if(data.request.status == 'error'){
                     created = true;

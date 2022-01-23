@@ -6,7 +6,7 @@
         console.log(e);
         sessionStorage.removeItem('UID');
         sessionStorage.removeItem('password')
-        window.location.href = 'http://localhost:3000/login';
+        window.location.href = 'https://virgin-yukon-sbjct-ratios.trycloudflare.com/login';
     }
 
     let loggedIn = false;
