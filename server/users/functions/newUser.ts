@@ -40,7 +40,12 @@ async function newUser(req: Request, res: Response) {
           type: "newUser",
           status: "done",
         },
-        data: newUser
+        data: {
+          id: newUser.id,
+          email: newUser.email,
+          name: newUser.name,
+          permitionId: newUser.permitionId
+        }
       })
     }
     else{
