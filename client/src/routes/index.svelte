@@ -1,6 +1,8 @@
 <script>
 	import Entry from '../entry.svelte';
 	import Modal from '../modal.svelte';
+	import Background from '../background.svelte';
+	import Clouds from '../clouds.svelte';
 	import { modalNumber, modalPostId } from '../store'
 
 	const dbUrl = import.meta.env.VITE_BACKEND_URL;
