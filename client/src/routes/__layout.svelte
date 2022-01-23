@@ -79,6 +79,7 @@
         display: flex;
 	    justify-content: center;
         background: rgb(88, 97, 96);
+        bottom: 0;
     }
     #spacer{
         margin-bottom: 8vh;
