@@ -46,7 +46,7 @@ function users(app: Express, prisma: PrismaClient){
     });
   
     app.post('/users/all', (req, res) => {
-      getAll(res)
+      getAll(req, res)
       .catch((e) => {
         throw e
       })
