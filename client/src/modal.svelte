@@ -36,8 +36,8 @@
 	<div class="modal" on:click|stopPropagation>
 		<h1>Vorfall: {incident}</h1>
 		<h2>Name: {suspect}</h2>
-		<h4>aus der Klasse {klasse} der {school}</h4>
-		<p>Der Vorfall hat sich {location} um {time} abgespielt</p>
+		<h4>Aus der Klasse {klasse} der {school}</h4>
+		<p>Der Vorfall hat sich {location} am {time} abgespielt</p>
 		<p>gemeldet von {author}</p>
 		<button id="close" on:click={() => ($modalNumber = null)}> X </button>
 		<button on:click={() => deleteEntry($modalPostId)}> Löschen </button>
