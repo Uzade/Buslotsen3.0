@@ -1,5 +1,7 @@
 <script>
-	import { isAdmin } from '../store'
+	import { isAdmin, authorId } from '../store'
+	import { goto } from '$app/navigation';
+
 	function onSubmit(e) {
 		const dbUrl = import.meta.env.VITE_BACKEND_URL;
 		const data = {
@@ -17,13 +19,16 @@
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.request.status == 'done') {
-					console.log('Logged in!');
 					sessionStorage.setItem('UID', e.target.UID.value);
 					sessionStorage.setItem('password', e.target.password.value);
-					if(data.data.permitionId = 1){
+					$authorId = data.data.userId;
+					console.log($authorId);
+					if(data.data.permitionId == 1){
+						console.log(data.data.permitionId);
+						console.log("is doch admin");
 						$isAdmin = true;
 					}
-					window.location.href = 'http://localhost:3000/';
+					goto('/', {replaceState: true});
 				} //TODO implement error display after error messaages are implemented in backend
 				/*else if(data.request.status == 'error'){
                     created = true;

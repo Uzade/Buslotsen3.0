@@ -1,20 +1,21 @@
 <script lang="ts">
 
     import { isAdmin } from '../store';
+    import { goto } from '$app/navigation';
 
     function logout (e){
         console.log(e);
         sessionStorage.removeItem('UID');
         sessionStorage.removeItem('password')
-        window.location.href = 'http://localhost:3000/login';
+        goto('/login', {replaceState: true});
     }
 
     let loggedIn = false;
-    if (typeof window !== 'undefined') {
+    $: if (typeof window !== 'undefined') {
 		const UID = sessionStorage.getItem('UID');
 		const password = sessionStorage.getItem('password');
 
-		if (UID || password) {
+		if (UID && password) {
 			loggedIn = true;
 		}
 	}

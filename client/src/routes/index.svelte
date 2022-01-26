@@ -1,7 +1,8 @@
 <script>
 	import Entry from '../entry.svelte';
 	import Modal from '../modal.svelte';
-	import { modalNumber, modalPostId } from '../store'
+	import { modalNumber, modalPostId } from '../store';
+	import { goto } from '$app/navigation';
 
 	const dbUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -11,7 +12,7 @@
 		const password = sessionStorage.getItem('password');
 
 		if (!UID || !password) {
-			window.location.href = 'http://localhost:3000/login';
+			goto('/login', {replaceState: true});
 		}
 	
 
@@ -48,7 +49,7 @@
 </script>
 
 <div>
-	{#if $modalNumber}
+	{#if Number.isInteger($modalNumber)}
 		<Modal
 			suspect={entries[$modalNumber].suspect}
 			school={entries[$modalNumber].school}

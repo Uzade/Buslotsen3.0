@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { authorId } from '../store';
 	if (typeof window !== 'undefined') {
 		const UID = sessionStorage.getItem('UID');
 		const password = sessionStorage.getItem('password');
 
 		if (!UID || !password) {
-			window.location.href = 'http://localhost:3000/login';
+			goto('/login', {replaceState: true});
 		}
 	}
 
@@ -20,8 +22,14 @@
 				name: UID,
 				password: password
 			},
-			title: e.target.title.value,
-			authorId: Number(e.target.id.value)
+			suspect: e.target.suspect.value,
+			school: e.target.schule.value,
+			class: e.target.class.value,
+			time: e.target.time.value,
+			location: e.target.location.value,
+			incident: e.target.incident.value,
+			authorId: $authorId
+
 		};
 
 		fetch(dbUrl + 'entries/new', {
@@ -37,10 +45,9 @@
 					created = true;
 					error = '';
 				} //TODO implement error display after error messaages are implemented in backend
-				/*else if(data.request.status == 'error'){
-                    created = true;
-                    error = "";
-                }*/
+				else{
+                    console.log(data);
+                }
 			});
 	}
 </script>
@@ -48,20 +55,53 @@
 <div>
 	<form on:submit|preventDefault={onSubmit}>
 		<div>
-			<label for="name">Titel:</label>
+			<label for="suspect">Täter:</label>
             <input
             type="text"
-            id="title"
-            name="title"
+            id="suspect"
+            name="suspect"
             value=""
         />
     	</div>
 		<div>
-			<label for="name">Authornummer:</label>
+			<label for="schule">Schule:</label>
 			<input
-                type="number"
-                id="id"
-                name="id"
+                type="text"
+                id="schule"
+                name="schule"
+                value=""
+            />
+		</div>
+		<div>
+			<label for="class">Klasse:</label>
+			<input
+                type="text"
+                id="class"
+                name="class"
+                value=""
+            />
+		</div>
+		<div>
+			<label for="time">Uhrzeit:</label>
+			<input type="datetime-local" id="time"
+       			name="time" value="{new Date()}"
+			/>
+		</div>
+		<div>
+			<label for="name">Ort</label>
+			<input
+                type="text"
+                id="location"
+                name="location"
+                value=""
+            />
+		</div>
+		<div>
+			<label for="name">Vorfall</label>
+			<input
+                type="text"
+                id="incident"
+                name="incident"
                 value=""
             />
 		</div>
