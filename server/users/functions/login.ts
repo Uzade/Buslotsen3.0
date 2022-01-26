@@ -17,6 +17,7 @@ async function login(req: Request, res: Response) {
     else {
         const dbPassword = await prisma.user.findUnique({
             select: {
+                id: true,
                 password: true,
                 permitionId: true,
             },
@@ -33,7 +34,8 @@ async function login(req: Request, res: Response) {
                             status: "done",
                         },
                         data: {
-                            permitionId: dbPassword?.permitionId
+                            permitionId: dbPassword?.permitionId,
+                            userId: dbPassword?.id
                         }
                     });
                 }
