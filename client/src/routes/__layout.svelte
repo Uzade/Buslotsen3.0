@@ -25,7 +25,6 @@
 <div id="navbar">
     <a href="./">Overview</a>
     <a href="./post"> New Post</a>
-    <a href="./contact">Contakt</a>
     {#if loggedIn}
         <button on:click|once={logout}>Logout</button>
     {/if}
