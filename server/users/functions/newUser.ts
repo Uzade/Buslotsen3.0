@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 const bcrypt = require('bcrypt');
 
 async function newUser(req: Request, res: Response) {
+  console.log(req.body);
   if (!req.body.requestor.password || !req.body.requestor.name) {
     res.status(401).json({
       request: {
@@ -14,7 +15,7 @@ async function newUser(req: Request, res: Response) {
       message: "You specified the wrong login credentials."
     });
   }
-  else if (!req.body.password || !req.body.name || !req.body.email || !req.body.permitionId) {
+  else if (!req.body.password || !req.body.name || !req.body.email || isNaN(req.body.permitionId)) {
     res.status(400).json({
       request: {
         type: "newUser",
