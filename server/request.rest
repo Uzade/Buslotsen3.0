@@ -3,8 +3,8 @@ content-type: application/json
 
 {
     "requestor": {
-        "name": "KarlHeinz",
-        "password": "test12345"
+        "name": "admin",
+        "password": "password"
     }
 }
 
